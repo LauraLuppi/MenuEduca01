@@ -74,3 +74,13 @@ footer {
     text-align: center !important;
     background-color: white !important;
 }
+
+.custom-btn {
+    background-color: #432615;
+    color: #fff;
+    border: none;
+}
+
+    .custom-btn:hover {
+        background-color: #5a3420; /* um tom um pouco mais claro para hover */
+    }
