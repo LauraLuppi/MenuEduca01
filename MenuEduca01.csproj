@@ -10,10 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\oi\**" />
-    <Content Remove="Models\oi\**" />
-    <EmbeddedResource Remove="Models\oi\**" />
-    <None Remove="Models\oi\**" />
+    <None Include="MenuEduca01.sln" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +21,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
   </ItemGroup>
 
 </Project>
