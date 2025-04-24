@@ -10,22 +10,22 @@ using MenuEduca01.Models;
 
 namespace MenuEduca01.Controllers
 {
-    public class CadastroUsuariosController : Controller
+    public class CardapiosController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CadastroUsuariosController(ApplicationDbContext context)
+        public CardapiosController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: CadastroUsuarios
+        // GET: Cardapios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Cardapios.ToListAsync());
         }
 
-        // GET: CadastroUsuarios/Details/5
+        // GET: Cardapios/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -33,40 +33,40 @@ namespace MenuEduca01.Controllers
                 return NotFound();
             }
 
-            var cadastroUsuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.CadastroUsuarioId == id);
-            if (cadastroUsuario == null)
+            var cardapio = await _context.Cardapios
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cardapio == null)
             {
                 return NotFound();
             }
 
-            return View(cadastroUsuario);
+            return View(cardapio);
         }
 
-        // GET: CadastroUsuarios/Create
+        // GET: Cardapios/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CadastroUsuarios/Create
+        // POST: Cardapios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CadastroUsuarioId,NomeCompleto,CPF,Email,Senha,TipoUsuario")] CadastroUsuario cadastroUsuario)
+        public async Task<IActionResult> Create([Bind("Id,Categoria,NomeRefeicao,Imagem,Descricao,Ingredientes,Calorias,Data,UsuariosId")] Cardapio cardapio)
         {
             if (ModelState.IsValid)
             {
-                cadastroUsuario.CadastroUsuarioId = Guid.NewGuid();
-                _context.Add(cadastroUsuario);
+                cardapio.Id = Guid.NewGuid();
+                _context.Add(cardapio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(cadastroUsuario);
+            return View(cardapio);
         }
 
-        // GET: CadastroUsuarios/Edit/5
+        // GET: Cardapios/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace MenuEduca01.Controllers
                 return NotFound();
             }
 
-            var cadastroUsuario = await _context.Usuarios.FindAsync(id);
-            if (cadastroUsuario == null)
+            var cardapio = await _context.Cardapios.FindAsync(id);
+            if (cardapio == null)
             {
                 return NotFound();
             }
-            return View(cadastroUsuario);
+            return View(cardapio);
         }
 
-        // POST: CadastroUsuarios/Edit/5
+        // POST: Cardapios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("CadastroUsuarioId,NomeCompleto,CPF,Email,Senha,TipoUsuario")] CadastroUsuario cadastroUsuario)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Categoria,NomeRefeicao,Imagem,Descricao,Ingredientes,Calorias,Data,UsuariosId")] Cardapio cardapio)
         {
-            if (id != cadastroUsuario.CadastroUsuarioId)
+            if (id != cardapio.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace MenuEduca01.Controllers
             {
                 try
                 {
-                    _context.Update(cadastroUsuario);
+                    _context.Update(cardapio);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CadastroUsuarioExists(cadastroUsuario.CadastroUsuarioId))
+                    if (!CardapioExists(cardapio.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace MenuEduca01.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(cadastroUsuario);
+            return View(cardapio);
         }
 
-        // GET: CadastroUsuarios/Delete/5
+        // GET: Cardapios/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -125,34 +125,34 @@ namespace MenuEduca01.Controllers
                 return NotFound();
             }
 
-            var cadastroUsuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.CadastroUsuarioId == id);
-            if (cadastroUsuario == null)
+            var cardapio = await _context.Cardapios
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cardapio == null)
             {
                 return NotFound();
             }
 
-            return View(cadastroUsuario);
+            return View(cardapio);
         }
 
-        // POST: CadastroUsuarios/Delete/5
+        // POST: Cardapios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var cadastroUsuario = await _context.Usuarios.FindAsync(id);
-            if (cadastroUsuario != null)
+            var cardapio = await _context.Cardapios.FindAsync(id);
+            if (cardapio != null)
             {
-                _context.Usuarios.Remove(cadastroUsuario);
+                _context.Cardapios.Remove(cardapio);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CadastroUsuarioExists(Guid id)
+        private bool CardapioExists(Guid id)
         {
-            return _context.Usuarios.Any(e => e.CadastroUsuarioId == id);
+            return _context.Cardapios.Any(e => e.Id == id);
         }
     }
 }

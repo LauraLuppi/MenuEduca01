@@ -1,7 +1,5 @@
-﻿using MenuEduca01.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace MenuEduca01.Data
 {

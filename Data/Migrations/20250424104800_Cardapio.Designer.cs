@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MenuEduca01.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250411144045_Tabela")]
-    partial class Tabela
+    [Migration("20250424104800_Cardapio")]
+    partial class Cardapio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,35 @@ namespace MenuEduca01.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("MenuEduca01.Models.Avaliacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid?>("CadastroUsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CardapioId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("CardapioId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("UsuariosId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CadastroUsuarioId");
+
+                    b.HasIndex("CardapioId1");
+
+                    b.ToTable("Avaliacaos", (string)null);
+                });
 
             modelBuilder.Entity("MenuEduca01.Models.CadastroUsuario", b =>
                 {
@@ -54,6 +83,82 @@ namespace MenuEduca01.Data.Migrations
                     b.HasKey("CadastroUsuarioId");
 
                     b.ToTable("Usuarios", (string)null);
+                });
+
+            modelBuilder.Entity("MenuEduca01.Models.Cardapio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Calorias")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateOnly>("Data")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Imagem")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ingredientes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeRefeicao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuariosId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cardapios", (string)null);
+                });
+
+            modelBuilder.Entity("MenuEduca01.Models.InsercaoMedica", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CadastroUsuarioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DataCadastro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notificacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsuariosId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("receitaMedica")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CadastroUsuarioId");
+
+                    b.ToTable("InsercaoMedicas", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -256,6 +361,30 @@ namespace MenuEduca01.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("MenuEduca01.Models.Avaliacao", b =>
+                {
+                    b.HasOne("MenuEduca01.Models.CadastroUsuario", "CadastroUsuario")
+                        .WithMany()
+                        .HasForeignKey("CadastroUsuarioId");
+
+                    b.HasOne("MenuEduca01.Models.Cardapio", "Cardapio")
+                        .WithMany()
+                        .HasForeignKey("CardapioId1");
+
+                    b.Navigation("CadastroUsuario");
+
+                    b.Navigation("Cardapio");
+                });
+
+            modelBuilder.Entity("MenuEduca01.Models.InsercaoMedica", b =>
+                {
+                    b.HasOne("MenuEduca01.Models.CadastroUsuario", "CadastroUsuario")
+                        .WithMany()
+                        .HasForeignKey("CadastroUsuarioId");
+
+                    b.Navigation("CadastroUsuario");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
