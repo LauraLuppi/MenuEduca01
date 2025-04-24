@@ -1,10 +1,10 @@
-﻿@model IEnumerable<MenuEduca01.Models.InsercaoMedica>
+﻿@model IEnumerable<MenuEduca01.Models.Cardapio>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Iserção Médica</h1>
+<h1>Cardápio</h1>
 
 <div class="row mt-5 mb-3">
     <div class="col-3">
@@ -25,19 +25,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UsuariosId)
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeRefeicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagem)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.receitaMedica)
+                @Html.DisplayNameFor(model => model.Ingredientes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
+                @Html.DisplayNameFor(model => model.Calorias)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Notificacao)
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuariosId)
             </th>
             <th></th>
         </tr>
@@ -47,19 +56,28 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UsuariosId)
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeRefeicao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imagem)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.receitaMedica)
+                    @Html.DisplayFor(modelItem => item.Ingredientes)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                    @Html.DisplayFor(modelItem => item.Calorias)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Notificacao)
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuariosId)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
