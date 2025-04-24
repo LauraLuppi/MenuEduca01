@@ -53,11 +53,12 @@
                     <div>
                         <a asp-action="Index" class="btn btn-outline-secondary w-100 p-2"><i class="bi bi-arrow-clockwise"></i> Voltar</a>
                     </div>
-                </div>
-            </div>
         </form>
-        @section Scripts {
-            @{
-                await Html.RenderPartialAsync("_ValidationScriptsPartial");
-            }
-        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
