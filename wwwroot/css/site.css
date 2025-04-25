@@ -74,3 +74,134 @@ footer {
     text-align: center !important;
     background-color: white !important;
 }
+
+.form-container {
+    display: flex;
+    margin: 0 auto;
+}
+
+.form-image {
+    flex: 1;
+    background-image: url('https://www.unileverfoodsolutions.com.br/dam/global-ufs/mcos/SLA/calcmenu/recipes/BR-recipes/red-meats-&-red-meat-dishes/contra-fil%C3%A9-com-arroz-feij%C3%A3o-batata-frita-e-vinagrete/main-header.jpg'); /* ajuste o caminho */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px 0 0 10px;
+}
+
+.form-box {
+    flex: 1;
+    background-color: #ae7a4d;
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    color: white;
+}
+
+    .form-box label {
+        margin-top: 10px;
+    }
+
+.form-control {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    background-color: #deb887;
+    color: black;
+}
+
+.btn-submit {
+    background-color: #5c3d24;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.custom-btn {
+    background-color: #432615;
+    color: #fff;
+    border: none;
+}
+
+    .custom-btn:hover {
+        background-color: #5a3420; /* um tom um pouco mais claro para hover */
+    }
+
+.btn-caramelo {
+    background-color: #a46c3e; /* caramelo */
+    color: white;
+    border: 1px solid #f3e8dc; /* borda clara */
+    border-radius: 10px;
+    padding: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+    .btn-caramelo:hover {
+        background-color: #c0956b; /* bege quente */
+        border-color: #f3e8dc;
+        color: white;
+    }
+
+.search-input {
+    background-color: #deb887; /* bege médio */
+    color: #432615; /* marrom escuro */
+    border: 1px solid #f3e8dc; /* borda clara */
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+    .search-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #a46c3e;
+        border-color: #a46c3e;
+    }
+
+
+.input-group {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #deb887; /* Bege médio */
+    border: 1px solid #f3e8dc; /* Borda clara */
+}
+
+.search-input {
+    background-color: transparent;
+    color: #432615;
+    border: none;
+    border-radius: 0;
+    padding: 14px 15px 6px 15px; /* Aumenta padding-top, diminui padding-bottom */
+    flex: 1;
+}
+
+    .search-input::placeholder {
+        color: #794623; /* marrom médio */
+        opacity: 0.8;
+        font-style: italic;
+    }
+
+    .search-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+.search-btn {
+    background-color: #a46c3e; /* caramelo */
+    color: white;
+    border: none;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+    .search-btn:hover {
+        background-color: #c0956b;
+    }
+
+.btn-adicionar {
+    margin-top: 10px; /* ou ajuste até alinhar com o campo de busca */
+}
