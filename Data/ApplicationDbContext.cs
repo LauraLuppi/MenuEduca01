@@ -19,15 +19,15 @@ namespace MenuEduca01.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<CadastroUsuario>().ToTable("CadastroUsuarios");
-            modelBuilder.Entity<Cardapio>().ToTable("Cardapios");
-            modelBuilder.Entity<InsercaoMedica>().ToTable("InsercaoMedicas");
-            modelBuilder.Entity<Avaliacao>().ToTable("Avaliacaos");
+            base.OnModelCreating(builder);
+            builder.Entity<CadastroUsuario>().ToTable("CadastroUsuarios");
+            builder.Entity<Cardapio>().ToTable("Cardapios");
+            builder.Entity<InsercaoMedica>().ToTable("InsercaoMedicas");
+            builder.Entity<Avaliacao>().ToTable("Avaliacaos");
 
             // Cadastrando as Roles padrão do Sistema 
             Guid CadastroUsuario = Guid.NewGuid();
-            modelBuilder.Entity<IdentityRole>().HasData(
+            builder.Entity<IdentityRole>().HasData(
                 new IdentityRole
                 {
                     Id = CadastroUsuario.ToString(),
