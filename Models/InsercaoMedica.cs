@@ -25,7 +25,7 @@ namespace MenuEduca01.Models
 
         [Required(ErrorMessage = "Preencher esse campo é obrigatório")]
         [Display(Name = "DataCadastro")]
-        public string DataCadastro { get; set; }
+        public DateTime DataCadastro { get; set; }
 
         [Required(ErrorMessage = "Preencher esse campo é obrigatório")]
         [Display(Name = "Notificacao")]
