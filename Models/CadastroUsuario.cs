@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace MenuEduca01.Models
 {
@@ -27,5 +28,7 @@ namespace MenuEduca01.Models
         [Display(Name = "Tipo Usuário")]
         [Required(ErrorMessage = "Preencher esse campo é obrigatório")]
         public string TipoUsuario { get; set; }
+        public Guid? AppUserId { get; set; }
+        public IdentityUser? IdentityUser { get; set; }
     }
 }

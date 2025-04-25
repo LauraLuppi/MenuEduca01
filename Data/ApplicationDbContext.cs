@@ -1,4 +1,5 @@
 ﻿using MenuEduca01.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,13 +18,36 @@ namespace MenuEduca01.Data
         public DbSet<InsercaoMedica> InsercaoMedicas { get; set; }
         public DbSet<Avaliacao> Avaliacaos { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            builder.Entity<CadastroUsuario>().ToTable("Usuarios");
-            builder.Entity<Cardapio>().ToTable("Cardapios");
-            builder.Entity<InsercaoMedica>().ToTable("InsercaoMedicas");
-            builder.Entity<Avaliacao>().ToTable("Avaliacaos");
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<CadastroUsuario>().ToTable("Usuarios");
+            modelBuilder.Entity<Cardapio>().ToTable("Cardapios");
+            modelBuilder.Entity<InsercaoMedica>().ToTable("InsercaoMedicas");
+            modelBuilder.Entity<Avaliacao>().ToTable("Avaliacaos");
+
+            // Cadastrando as Roles padrão do Sistema 
+            Guid CadastroUsuario = Guid.NewGuid();
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = CadastroUsuario.ToString(),
+                    Name = "CadastroUsuario",
+                    NormalizedName = "CADASTROUSUARIO"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Aluno",
+                    NormalizedName = "ALUNO"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Nutricionista",
+                    NormalizedName = "NUTRICIONISTA"
+                }
+            );
         }
     }
 }
