@@ -4,15 +4,14 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Criar</h1>
 
-<h4>Avaliacao</h4>
-<hr />
+<h4 class="centro">Avaliações</h4>
 
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<div class="row">
-    <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 <label asp-for="UsuariosId" class="control-label"></label>
                 <input asp-for="UsuariosId" class="form-control" />
@@ -23,28 +22,28 @@
                 <input asp-for="CardapioId" class="form-control" />
                 <span asp-validation-for="CardapioId" class="text-danger"></span>
             </div>
+        </div>
     </div>
-</div>
-            <div class="row">
-                <div class="col-6 mt-3">
-                    <div class="form-group">
-                        <button type="submit" value="Salvar" class="btn btn-outline-secondary w-100 p-2">
-                            <i class="bi bi-floppy"></i> Salvar
-                        </button>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-6 mt-3">
+            <div class="form-group">
+                <button type="submit" value="Salvar" class="btn btn-outline-secondary w-100 p-2">
+                    <i class="bi bi-floppy"></i> Salvar
+                </button>
             </div>
+        </div>
+    </div>
 
-                <div class="col-6 mt-3">
-                    <div>
-                        <a asp-action="Index" class="btn btn-outline-secondary w-100 p-2"><i class="bi bi-arrow-clockwise"></i> Voltar</a>
-                    </div>
-                </div>
+    <div class="col-6 mt-3">
+        <div>
+            <a asp-action="Index" class="btn btn-outline-secondary w-100 p-2"><i class="bi bi-arrow-clockwise"></i> Voltar</a>
+        </div>
+    </div>
 
-        </form>
+</form>
 
-        @section Scripts {
-            @{
-                await Html.RenderPartialAsync("_ValidationScriptsPartial");
-            }
-        }
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
