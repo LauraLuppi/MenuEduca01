@@ -79,7 +79,7 @@ namespace MenuEduca01.Data.Migrations
 
                     b.HasKey("CadastroUsuarioId");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("CadastroUsuarios", (string)null);
                 });
 
             modelBuilder.Entity("MenuEduca01.Models.Cardapio", b =>
@@ -182,6 +182,26 @@ namespace MenuEduca01.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fea11ab6-643c-4881-8fa0-2d88363f24d0",
+                            Name = "CadastroUsuario",
+                            NormalizedName = "CADASTROUSUARIO"
+                        },
+                        new
+                        {
+                            Id = "f0e28bfb-7412-458a-9d12-e8c0dd0da358",
+                            Name = "Aluno",
+                            NormalizedName = "ALUNO"
+                        },
+                        new
+                        {
+                            Id = "1f1c43b8-7722-450d-bf6d-58a32c68c165",
+                            Name = "Nutricionista",
+                            NormalizedName = "NUTRICIONISTA"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
