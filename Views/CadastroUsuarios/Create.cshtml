@@ -1,0 +1,46 @@
+﻿@model MenuEduca01.Models.CadastroUsuario
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="form-container">
+    <div class="form-image">
+        <!-- imagem decorativa à esquerda -->
+    </div>
+    <div class="form-box">
+        <form asp-action="Cadastrar">
+            <label asp-for="NomeCompleto"></label>
+            <input asp-for="NomeCompleto" class="form-control" />
+            <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+
+            <label asp-for="CPF"></label>
+            <input asp-for="CPF" class="form-control" />
+            <span asp-validation-for="CPF" class="text-danger"></span>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <label asp-for="Senha"></label>
+            <input asp-for="Senha" type="password" class="form-control" />
+            <span asp-validation-for="Senha" class="text-danger"></span>
+
+            <label asp-for="TipoUsuario"></label>
+            <select asp-for="TipoUsuario" class="form-control">
+                <option value="">Selecione</option>
+                <option>Aluno</option>
+                <option>Nutricionista</option>
+            </select>
+            <span asp-validation-for="TipoUsuario" class="text-danger"></span>
+
+            <button type="submit" class="btn-submit">Entrar</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

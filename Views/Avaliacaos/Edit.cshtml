@@ -1,0 +1,39 @@
+﻿@model MenuEduca01.Models.Avaliacao
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Avaliacao</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UsuariosId" class="control-label"></label>
+                <input asp-for="UsuariosId" class="form-control" />
+                <span asp-validation-for="UsuariosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardapioId" class="control-label"></label>
+                <input asp-for="CardapioId" class="form-control" />
+                <span asp-validation-for="CardapioId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

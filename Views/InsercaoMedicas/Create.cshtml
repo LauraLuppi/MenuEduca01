@@ -1,0 +1,52 @@
+﻿@model MenuEduca01.Models.InsercaoMedica
+
+@{
+    ViewData["Title"] = "Novo Registro Médico";
+}
+
+<div class="insercao-medica-page">
+    <h2>Novo Registro Médico</h2>
+
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="UsuariosId" class="control-label"></label>
+            <input asp-for="UsuariosId" class="form-control" />
+            <span asp-validation-for="UsuariosId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Descricao" class="control-label">Descrição da Doença</label>
+            <input asp-for="Descricao" class="form-control" />
+            <span asp-validation-for="Descricao" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="receitaMedica" class="control-label">Receita Médica</label>
+            <input asp-for="receitaMedica" class="form-control" />
+            <span asp-validation-for="receitaMedica" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DataCadastro" class="control-label">Data de Cadastro</label>
+            <input asp-for="DataCadastro" class="form-control" type="date" />
+            <span asp-validation-for="DataCadastro" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Notificacao" class="control-label">Notificação</label>
+            <textarea asp-for="Notificacao" class="form-control"></textarea>
+            <span asp-validation-for="Notificacao" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-3">
+            <input type="submit" value="Salvar" class="btn btn-outline-secondary" />
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
