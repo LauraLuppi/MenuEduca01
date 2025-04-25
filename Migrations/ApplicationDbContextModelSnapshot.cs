@@ -4,19 +4,16 @@ using MenuEduca01.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MenuEduca01.Data.Migrations
+namespace MenuEduca01.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250411170801_Avalicao")]
-    partial class Avalicao
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +79,7 @@ namespace MenuEduca01.Data.Migrations
 
                     b.HasKey("CadastroUsuarioId");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("CadastroUsuarios", (string)null);
                 });
 
             modelBuilder.Entity("MenuEduca01.Models.Cardapio", b =>
@@ -134,9 +131,8 @@ namespace MenuEduca01.Data.Migrations
                     b.Property<Guid?>("CadastroUsuarioId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("DataCadastro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -186,6 +182,26 @@ namespace MenuEduca01.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a18fbf85-e4ce-494a-a4a6-bbeed2eb107f",
+                            Name = "CadastroUsuario",
+                            NormalizedName = "CADASTROUSUARIO"
+                        },
+                        new
+                        {
+                            Id = "253560dc-74f6-4e99-8769-f36977816d32",
+                            Name = "Aluno",
+                            NormalizedName = "ALUNO"
+                        },
+                        new
+                        {
+                            Id = "f1c3429c-e068-41c5-ba6a-b50027971cbd",
+                            Name = "Nutricionista",
+                            NormalizedName = "NUTRICIONISTA"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
