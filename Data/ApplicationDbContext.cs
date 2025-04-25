@@ -18,10 +18,10 @@ namespace MenuEduca01.Data
         public DbSet<InsercaoMedica> InsercaoMedicas { get; set; }
         public DbSet<Avaliacao> Avaliacaos { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<CadastroUsuario>().ToTable("Usuarios");
+            modelBuilder.Entity<CadastroUsuario>().ToTable("CadastroUsuarios");
             modelBuilder.Entity<Cardapio>().ToTable("Cardapios");
             modelBuilder.Entity<InsercaoMedica>().ToTable("InsercaoMedicas");
             modelBuilder.Entity<Avaliacao>().ToTable("Avaliacaos");

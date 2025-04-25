@@ -4,6 +4,7 @@ using MenuEduca01.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MenuEduca01.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250411180831_Data")]
+    partial class Data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +60,6 @@ namespace MenuEduca01.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("AppUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -67,9 +67,6 @@ namespace MenuEduca01.Data.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdentityUserId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -84,8 +81,6 @@ namespace MenuEduca01.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CadastroUsuarioId");
-
-                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("Usuarios", (string)null);
                 });
@@ -380,15 +375,6 @@ namespace MenuEduca01.Data.Migrations
                     b.Navigation("CadastroUsuario");
 
                     b.Navigation("Cardapio");
-                });
-
-            modelBuilder.Entity("MenuEduca01.Models.CadastroUsuario", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("IdentityUserId");
-
-                    b.Navigation("IdentityUser");
                 });
 
             modelBuilder.Entity("MenuEduca01.Models.InsercaoMedica", b =>
